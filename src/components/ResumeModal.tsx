@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Download, Printer, X } from 'lucide-react';
+import { Download, ExternalLink, Printer, X } from 'lucide-react';
 import {
   ACHIEVEMENTS_DATA,
   CERTIFICATIONS_DATA,
@@ -10,6 +10,8 @@ interface ResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const RESUME_PDF_URL = '/Kiran_M_K_Resume.pdf';
 
 const RESUME_PLAIN_TEXT = `KIRAN M K
 Software Engineering Student | Full-Stack Development
@@ -42,20 +44,13 @@ Open Source Contributor — GirlScript Summer of Code (GSSoC) | Remote
 - Collaborated with maintainers through GitHub issues and pull requests on documentation, features, and code quality.
 
 PROJECTS
-1. Silent Bridge – Bidirectional Sign Language Recognition & 3D Avatar Studio
-   MediaPipe Tasks Vision (WebAssembly), Three.js / WebGL, TypeScript, React.js, Kannada TTS
-   GitHub: https://github.com/kiranmkHackHeroic/Silent_Bridge---Sign-Language-Recognition-Model
-   - Live Sign Language Recognition: High-framerate hand & face tracking via offline WebAssembly (@mediapipe/tasks-vision), dynamic motion segmentation, dual ISL gloss & Kannada translation, and Kannada TTS.
-   - Kannada to 3D Sign Avatar: Longest-match phrase dictionary lookup and bone-retargeted signing animations in real-time WebGL via Three.js.
-   - Dataset & Model Studio: In-app 5–10 sample calibration recorder, Model Registry with >2% regression rejection guardrails, and live pipeline diagnostics (FPS, latency, palm normals, OOD scores).
-
-2. MediPulse Pro – Inventory & Expiry Predictor
+1. MediPulse Pro – Inventory & Expiry Predictor
    Java 17, Spring Boot, MySQL (Aiven Cloud), Docker, Render
    - Built a hospital inventory platform with batch-level expiry tracking and stock management across six wards.
    - Validated first-expiry-first-out (FEFO) prioritization, formula-based reorder logic, expiry alerts, and low-stock recommendations using synthetic data.
    - Implemented JWT-based role access and SSL-secured MySQL connectivity; deployed with Docker on Render.
 
-3. DSA Logic Builder
+2. DSA Logic Builder
    React.js, Tailwind CSS, Gemini AI, Node.js, JWT
    - Built a Gemini-powered code explainer for Python, Java, C++, and JavaScript with step-by-step explanations, variable tracking, and boundary-error highlighting.
    - Created a seven-step interview-practice learning path covering 100+ questions and 15+ algorithmic patterns.
@@ -88,21 +83,44 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   const handleDownloadResume = () => {
-    const blob = new Blob([RESUME_PLAIN_TEXT], {
-      type: 'text/plain;charset=utf-8',
-    });
-    const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Kiran_MK_Resume.txt';
+    link.href = RESUME_PDF_URL;
+    link.download = 'Kiran_M_K_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   const handlePrintResume = () => {
-    window.print();
+    // Open the official PDF in a print/view tab or print via hidden iframe
+    const existingIframe = document.getElementById('resume-print-iframe');
+    if (existingIframe) {
+      existingIframe.remove();
+    }
+
+    const iframe = document.createElement('iframe');
+    iframe.id = 'resume-print-iframe';
+    iframe.style.position = 'fixed';
+    iframe.style.right = '0';
+    iframe.style.bottom = '0';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = '0';
+    iframe.src = RESUME_PDF_URL;
+    document.body.appendChild(iframe);
+
+    iframe.onload = () => {
+      try {
+        iframe.contentWindow?.focus();
+        iframe.contentWindow?.print();
+      } catch {
+        window.open(RESUME_PDF_URL, '_blank');
+      }
+    };
+  };
+
+  const handleOpenPdf = () => {
+    window.open(RESUME_PDF_URL, '_blank');
   };
 
   return (
@@ -136,17 +154,28 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               type="button"
               onClick={handleDownloadResume}
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-sky-400 text-slate-950 hover:bg-sky-300 text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              title="Download official PDF resume"
             >
               <Download className="w-4 h-4" aria-hidden="true" />
-              <span>Download Resume</span>
+              <span>Download PDF</span>
             </button>
             <button
               type="button"
               onClick={handlePrintResume}
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              title="Print official PDF resume"
             >
               <Printer className="w-4 h-4" aria-hidden="true" />
               <span>Print</span>
+            </button>
+            <button
+              type="button"
+              onClick={handleOpenPdf}
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              title="Open official PDF in new tab"
+            >
+              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+              <span>Open PDF</span>
             </button>
             <button
               type="button"
@@ -317,34 +346,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <h3 className="text-xs font-mono text-sky-400 tracking-wider">
               05. PROJECTS
             </h3>
+
             <div className="space-y-1">
               <div className="flex flex-wrap justify-between text-white font-semibold">
-                <a
-                  href="https://github.com/kiranmkHackHeroic/Silent_Bridge---Sign-Language-Recognition-Model"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-sky-300 underline decoration-sky-400/50 underline-offset-4 transition-colors"
-                >
-                  Silent Bridge – Bidirectional Sign Language Recognition & 3D Avatar Studio ↗
-                </a>
-                <span className="text-xs font-mono text-slate-400">
-                  MediaPipe Wasm · Three.js / WebGL · TypeScript · React.js · Kannada TTS
+                <span className="text-white font-semibold">
+                  MediPulse Pro – Inventory & Expiry Predictor
                 </span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-300">
-                • Live Sign Language Recognition: High-framerate browser hand/face tracking via offline WebAssembly (@mediapipe/tasks-vision), dynamic motion segmentation, dual ISL gloss & Kannada translation, and Kannada TTS.
-              </p>
-              <p className="text-xs sm:text-sm text-slate-300">
-                • Kannada to 3D Sign Avatar: Longest-match phrase dictionary lookup and bone-retargeted signing animations rendered in real-time WebGL via Three.js.
-              </p>
-              <p className="text-xs sm:text-sm text-slate-300">
-                • Dataset & Model Studio: In-app 5–10 sample calibration recorder, Model Registry with &gt;2% regression rejection guardrails, and live pipeline diagnostics (FPS, latency, palm normals, OOD scores).
-              </p>
-            </div>
-
-            <div className="space-y-1 pt-2">
-              <div className="flex flex-wrap justify-between text-white font-semibold">
-                <span>MediPulse Pro – Inventory & Expiry Predictor</span>
                 <span className="text-xs font-mono text-slate-400">
                   Java 17 · Spring Boot · MySQL (Aiven Cloud) · Docker · Render
                 </span>
@@ -362,7 +369,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
             <div className="space-y-1 pt-2">
               <div className="flex flex-wrap justify-between text-white font-semibold">
-                <span>DSA Logic Builder</span>
+                <span className="text-white font-semibold">
+                  DSA Logic Builder
+                </span>
                 <span className="text-xs font-mono text-slate-400">
                   React.js · Tailwind CSS · Gemini AI · Node.js · JWT
                 </span>
@@ -383,6 +392,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 06. RESEARCH & ACHIEVEMENTS
               </h3>
               <div className="space-y-2 text-xs sm:text-sm">
+                <div>
+                  <div className="text-white font-semibold">
+                    Published Research Article (2026)
+                  </div>
+                  <div className="text-slate-300">
+                    International Journal of Drug Delivery Technology, Vol. 16, Issue 7.
+                  </div>
+                </div>
                 {ACHIEVEMENTS_DATA.map((ach) => (
                   <div key={ach.title}>
                     <div className="text-white font-semibold">{ach.title}</div>
