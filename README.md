@@ -14,8 +14,8 @@
 
 ### 2. Comprehensive Systems & AI Case Studies
 - **SilentBridge**: Real-time two-way Indian Sign Language (ISL) ↔ spoken language translation prototype integrating MediaPipe keypoint extraction, ST-GCN, Transformer sequence modeling, and interactive Three.js 3D avatar playback.
-- **MediPulse**: Full-stack healthcare pharmaceutical inventory forecasting engine executing First-Expiry-First-Out (FEFO) stock allocation with SSL-secured Aiven Cloud MySQL and Express.
-- **DSA Logic Builder**: AI-assisted algorithmic code explainer supporting line-by-line variable state tracking and loop boundary condition checks.
+- **MediPulse Pro** ([Live Demo](https://medipulse-pro.onrender.com/) · [GitHub](https://github.com/kiranmkHackHeroic/MediPulse-Pro-Hospital-Inventory-Expiry-Predictor)): Full-stack healthcare pharmaceutical inventory forecasting engine executing First-Expiry-First-Out (FEFO) stock allocation with SSL-secured Aiven Cloud MySQL and Spring Boot.
+- **DSA Logic Builder** ([Live Demo](https://dsa-logic-builder.vercel.app/) · [GitHub](https://github.com/kiranmkHackHeroic/dsa-logic-builder)): AI-assisted algorithmic code explainer supporting line-by-line variable state tracking, edge-case boundary condition checks, and 7-step learning path.
 - **Academic Research**: Published author in the *International Journal of Drug Delivery Technology (IJDDT)*, Vol. 16, Issue 7.
 
 ### 3. Interactive Architecture & Tech Stack Matrix

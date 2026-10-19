@@ -46,12 +46,16 @@ Open Source Contributor — GirlScript Summer of Code (GSSoC) | Remote
 PROJECTS
 1. MediPulse Pro – Inventory & Expiry Predictor
    Java 17, Spring Boot, MySQL (Aiven Cloud), Docker, Render
+   Live Demo: https://medipulse-pro.onrender.com/
+   Source Code: https://github.com/kiranmkHackHeroic/MediPulse-Pro-Hospital-Inventory-Expiry-Predictor
    - Built a hospital inventory platform with batch-level expiry tracking and stock management across six wards.
    - Validated first-expiry-first-out (FEFO) prioritization, formula-based reorder logic, expiry alerts, and low-stock recommendations using synthetic data.
    - Implemented JWT-based role access and SSL-secured MySQL connectivity; deployed with Docker on Render.
 
 2. DSA Logic Builder
    React.js, Tailwind CSS, Gemini AI, Node.js, JWT
+   Live Demo: https://dsa-logic-builder.vercel.app/
+   Source Code: https://github.com/kiranmkHackHeroic/dsa-logic-builder
    - Built a Gemini-powered code explainer for Python, Java, C++, and JavaScript with step-by-step explanations, variable tracking, and boundary-error highlighting.
    - Created a seven-step interview-practice learning path covering 100+ questions and 15+ algorithmic patterns.
 
@@ -348,13 +352,34 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             </h3>
 
             <div className="space-y-1">
-              <div className="flex flex-wrap justify-between text-white font-semibold">
+              <div className="flex flex-wrap items-baseline justify-between gap-2 text-white font-semibold">
                 <span className="text-white font-semibold">
                   MediPulse Pro – Inventory & Expiry Predictor
                 </span>
-                <span className="text-xs font-mono text-slate-400">
-                  Java 17 · Spring Boot · MySQL (Aiven Cloud) · Docker · Render
-                </span>
+                <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <a
+                    href="https://github.com/kiranmkHackHeroic/MediPulse-Pro-Hospital-Inventory-Expiry-Predictor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-400 hover:text-sky-300 underline underline-offset-2 transition-colors"
+                  >
+                    Source Code
+                  </a>
+                  <span aria-hidden="true" className="text-slate-600">
+                    |
+                  </span>
+                  <a
+                    href="https://medipulse-pro.onrender.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors"
+                  >
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+              <div className="text-xs font-mono text-slate-400">
+                Java 17 · Spring Boot · MySQL (Aiven Cloud) · Docker · Render
               </div>
               <p className="text-xs sm:text-sm text-slate-300">
                 • Built a hospital inventory platform with batch-level expiry tracking and stock management across six wards.
@@ -367,14 +392,35 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </p>
             </div>
 
-            <div className="space-y-1 pt-2">
-              <div className="flex flex-wrap justify-between text-white font-semibold">
+            <div className="space-y-1 pt-3">
+              <div className="flex flex-wrap items-baseline justify-between gap-2 text-white font-semibold">
                 <span className="text-white font-semibold">
                   DSA Logic Builder
                 </span>
-                <span className="text-xs font-mono text-slate-400">
-                  React.js · Tailwind CSS · Gemini AI · Node.js · JWT
-                </span>
+                <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <a
+                    href="https://github.com/kiranmkHackHeroic/dsa-logic-builder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-400 hover:text-sky-300 underline underline-offset-2 transition-colors"
+                  >
+                    Source Code
+                  </a>
+                  <span aria-hidden="true" className="text-slate-600">
+                    |
+                  </span>
+                  <a
+                    href="https://dsa-logic-builder.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors"
+                  >
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+              <div className="text-xs font-mono text-slate-400">
+                React.js · Tailwind CSS · Gemini AI · Node.js · JWT
               </div>
               <p className="text-xs sm:text-sm text-slate-300">
                 • Built a Gemini-powered code explainer for Python, Java, C++, and JavaScript with step-by-step explanations, variable tracking, and boundary-error highlighting.

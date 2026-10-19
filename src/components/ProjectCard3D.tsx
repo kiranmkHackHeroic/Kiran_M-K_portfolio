@@ -145,6 +145,8 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
+                  target={project.liveUrl.startsWith('http') ? '_blank' : undefined}
+                  rel={project.liveUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
                   aria-label={`Interactive demo for ${project.title}`}
                   className="inline-flex items-center gap-1.5 hover:text-violet-300 transition-colors py-1.5 whitespace-nowrap shrink-0"
                 >

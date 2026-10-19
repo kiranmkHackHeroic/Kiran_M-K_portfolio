@@ -199,9 +199,11 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     ],
     featuredSpan: 'standard',
     visualTheme: 'medipulse',
-    repositoryUrl: 'https://github.com/kiranmkHackHeroic',
-    githubUrl: 'https://github.com/kiranmkHackHeroic',
-    liveUrl: '#architecture',
+    repositoryUrl:
+      'https://github.com/kiranmkHackHeroic/MediPulse-Pro-Hospital-Inventory-Expiry-Predictor',
+    githubUrl:
+      'https://github.com/kiranmkHackHeroic/MediPulse-Pro-Hospital-Inventory-Expiry-Predictor',
+    liveUrl: 'https://medipulse-pro.onrender.com/',
     problemStatement:
       'Hospital pharmacies and multi-ward stockrooms frequently suffer from critical medication stockouts or expired batch wastage due to manual tracking and lack of automated First-Expiry-First-Out (FEFO) dispatch rules.',
     systemArchitecture: {
@@ -261,9 +263,9 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     ],
     featuredSpan: 'standard',
     visualTheme: 'dsa-builder',
-    repositoryUrl: 'https://github.com/kiranmkHackHeroic',
-    githubUrl: 'https://github.com/kiranmkHackHeroic',
-    liveUrl: '#stack',
+    repositoryUrl: 'https://github.com/kiranmkHackHeroic/dsa-logic-builder',
+    githubUrl: 'https://github.com/kiranmkHackHeroic/dsa-logic-builder',
+    liveUrl: 'https://dsa-logic-builder.vercel.app/',
     problemStatement:
       'Students preparing for technical interviews often memorize code templates without understanding step-by-step variable mutations, off-by-one boundary conditions, or underlying algorithmic patterns.',
     systemArchitecture: {
